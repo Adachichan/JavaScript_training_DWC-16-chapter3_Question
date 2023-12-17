@@ -1,14 +1,29 @@
 // じゃんけんの手を入力してもらうプロンプト欄を生成
 let user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
 
+// グー・チョキ・パー以外の文字列入力時のアラートメッセージの表示
+while ((user_hand != "グー") && (user_hand != "チョキ") && (user_hand != "パー") && (user_hand != null)){
+  // 入力メッセージの表示
+  alert('グー・チョキ・パーのいずれかを入力して下さい');
+
+  // 変数の再代入
+  user_hand = prompt('じゃんけんの手をグー、チョキ、パーから選んでください。');
+}
+
 // じゃんけんの手をランダムに作成する関数を呼び出す
 let js_hand = getJShand();
 
 // ユーザの手とJavaScriptのじゃんけんの手を比べる関数を呼び出し、結果をjudgeに入れる
 let judge = winLose(user_hand, js_hand);
 
-// 結果を表示する
-alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'です。');
+// 入力ボタンの判定
+if(user_hand != null){
+  // 結果を表示する
+  alert('あなたの選んだ手は' + user_hand + 'です。\nJavaScriptの選んだ手は' + js_hand + 'です。\n結果は' + judge + 'です。');
+} else {
+  // 再チャレンジメッセージの表示
+  alert('またチャレンジしてね');
+}
 
 // ランダムでじゃんけんの手を作成する関数
 function getJShand(){
